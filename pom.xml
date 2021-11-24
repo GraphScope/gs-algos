@@ -17,45 +17,47 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>com.alibaba.graphscope</groupId>
-    <artifactId>grape-jdk-parent</artifactId>
-    <version>0.1</version>
-  </parent>
-  <artifactId>grape-demo</artifactId>
-
+  <groupId>com.alibaba.graphscope</groupId>
+  <artifactId>gs-algos</artifactId>
   <version>0.1</version>
 
   <packaging>jar</packaging>
-  <name>grape-demo</name>
+  <name>gs-algos</name>
+
+  <properties>
+    <fastjson.version>1.2.76</fastjson.version>
+    <grape-jdk.version>0.1</grape-jdk.version>
+    <fastffi.version>0.1</fastffi.version>
+    <slf4j-api.version>1.7.25</slf4j-api.version>
+    <ch.qos.logback.version>1.2.3</ch.qos.logback.version>
+  </properties>
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
       <groupId>com.alibaba</groupId>
       <artifactId>fastjson</artifactId>
+      <version>${fastjson.version}</version>
     </dependency>
     <dependency>
       <groupId>com.alibaba.graphscope</groupId>
       <artifactId>grape-jdk</artifactId>
-      <version>0.1</version>
+      <version>${grape-jdk.version}</version>
       <classifier>shaded</classifier>
     </dependency>
     <dependency>
       <groupId>com.alibaba.fastffi</groupId>
       <artifactId>annotation-processor</artifactId>
+      <version>${fastffi.version}</version>
     </dependency>
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
+      <version>${slf4j-api.version}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
+      <version>${ch.qos.logback.version}</version>
     </dependency>
   </dependencies>
 
@@ -63,17 +65,11 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>com.diffplug.spotless</groupId>
-        <artifactId>spotless-maven-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
+        <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <skipTests>true</skipTests>
+          <source>1.8</source>
+          <target>1.8</target>
+          <fork>true</fork>
         </configuration>
       </plugin>
     </plugins>

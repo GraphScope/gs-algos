@@ -1,7 +1,14 @@
 target/
 
+#idea
+.idea/*
+
+#vscode
+.vscode/
+
 *.class
 .factorypath
 .project
 *.prefs
 .classpath
+.iml
